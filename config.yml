@@ -1,0 +1,6 @@
+logging:
+  level: INFO
+  loggers:
+    sg.nus.iss.somik: DEBUG
+template: Hello, %s!
+defaultName: Stranger
