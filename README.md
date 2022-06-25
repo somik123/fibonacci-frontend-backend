@@ -33,3 +33,14 @@ Start the container with:
 ```
 docker run -d -p 8080:8080 --name sa54somik sa54somik
 ```
+
+.
+
+## Run React JS Client
+
+Run from local machine (requires npm):
+```
+cd react-js_client
+npm install
+npm start
+```
