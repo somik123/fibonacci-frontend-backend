@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:8080/fibonacci";
+const API_BASE_URL = "http://130.162.245.46:8080/fibonacci";
 
 
 class APIDataService {
