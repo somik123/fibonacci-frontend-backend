@@ -2,7 +2,7 @@ package sg.nus.iss.somik.api;
 
 public class FibRequest {
 	private Integer elements;
-	
+
 	public FibRequest() {
 		super();
 		// TODO Auto-generated constructor stub

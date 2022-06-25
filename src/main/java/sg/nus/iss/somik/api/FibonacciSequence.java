@@ -1,36 +1,38 @@
 package sg.nus.iss.somik.api;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FibonacciSequence {
-	private List<BigInteger> fibonacci;
-	private List<BigInteger> sorted;
-	
+	private List<String> fibonacci;
+	private List<String> sorted;
+
 	public FibonacciSequence() {
 		super();
 		// TODO Auto-generated constructor stub
-		this.fibonacci = new ArrayList<BigInteger>();
-		this.sorted = new ArrayList<BigInteger>();
+		this.fibonacci = new ArrayList<String>();
+		this.sorted = new ArrayList<String>();
 	}
-	
-	public FibonacciSequence(List<BigInteger> fibonacci, List<BigInteger> sorted) {
+
+	public FibonacciSequence(List<String> fibonacci, List<String> sorted) {
 		super();
 		this.fibonacci = fibonacci;
 		this.sorted = sorted;
 	}
-	
-	public List<BigInteger> getFibonacci() {
+
+	public List<String> getFibonacci() {
 		return fibonacci;
 	}
-	public void setFibonacci(List<BigInteger> fibonacci) {
+
+	public void setFibonacci(List<String> fibonacci) {
 		this.fibonacci = fibonacci;
 	}
-	public List<BigInteger> getSorted() {
+
+	public List<String> getSorted() {
 		return sorted;
 	}
-	public void setSorted(List<BigInteger> sorted) {
+
+	public void setSorted(List<String> sorted) {
 		this.sorted = sorted;
 	}
 }

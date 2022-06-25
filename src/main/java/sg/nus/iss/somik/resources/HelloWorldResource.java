@@ -1,7 +1,6 @@
 package sg.nus.iss.somik.resources;
 
 import java.io.File;
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -20,32 +19,32 @@ import sg.nus.iss.somik.api.FibonacciSequence;
 @Produces(MediaType.APPLICATION_JSON)
 public class HelloWorldResource {
 
-    public HelloWorldResource() {
-    }
+	public HelloWorldResource() {
+	}
 
-    @POST
-    @Timed
-    public FibonacciSequence sayHello(FibRequest fibReq) {
-        
-    	try {
+	@POST
+	@Timed
+	public FibonacciSequence sayHello(FibRequest fibReq) {
+
+		try {
 			if (fibReq == null) {
-				//System.out.println("ERROR: Received empty input.");
+				// System.out.println("ERROR: Received empty input.");
 				return new FibonacciSequence();
 			}
 
 			int num = fibReq.getElements();
 			if (num < 1 || num > 100) {
-				//System.out.println("Number out of range.");
+				// System.out.println("Number out of range.");
 				return new FibonacciSequence();
 			}
 
 			// Data for output
-			List<BigInteger> fibonacci = new ArrayList<>();
-			List<BigInteger> sorted = new ArrayList<>();
+			List<String> fibonacci = new ArrayList<>();
+			List<String> sorted = new ArrayList<>();
 
 			// Temp data for sorting
-			List<BigInteger> evenNums = new ArrayList<>();
-			List<BigInteger> oddNums = new ArrayList<>();
+			List<String> evenNums = new ArrayList<>();
+			List<String> oddNums = new ArrayList<>();
 
 			// Read the numbers from file (windows)
 			File myObj = new File("data.txt");
@@ -53,7 +52,7 @@ public class HelloWorldResource {
 				// Read the numbers from file (linux)
 				myObj = new File("/usr/app/data.txt");
 				if (!myObj.exists() || myObj.isDirectory()) {
-					//System.out.println("Data file not found either location");
+					// System.out.println("Data file not found either location");
 					return new FibonacciSequence();
 				}
 			}
@@ -65,13 +64,14 @@ public class HelloWorldResource {
 				String data = myReader.nextLine();
 
 				String[] parts = data.split(":");
-				BigInteger fibonacciNumber = new BigInteger(parts[1]);
+				String fibonacciNumber = parts[1];
+				Integer lastDigit = Integer.parseInt(parts[1].substring(parts[1].length() - 1));
 
 				// Add number to output sequence
 				fibonacci.add(fibonacciNumber);
 
-				// Seperate even and odd numbers
-				if (fibonacciNumber.mod(BigInteger.TWO) == BigInteger.ZERO)
+				// Separate even and odd numbers
+				if (lastDigit % 2 == 0)
 					evenNums.add(fibonacciNumber);
 				else
 					oddNums.add(fibonacciNumber);
@@ -80,21 +80,21 @@ public class HelloWorldResource {
 			myReader.close();
 
 			// Reserve sort
-			Collections.sort(evenNums, Collections.reverseOrder());
-			Collections.sort(oddNums, Collections.reverseOrder());
+			Collections.reverse(evenNums);
+			Collections.reverse(oddNums);
 
 			// Combine with even first, then odd
 			sorted.addAll(evenNums);
 			sorted.addAll(oddNums);
 
 			FibonacciSequence reply = new FibonacciSequence(fibonacci, sorted);
-			//System.out.println(reply);
+			// System.out.println(reply);
 
 			return reply;
 
 		} catch (Exception e) {
-			//System.out.println("ERROR: Unknown exception occured.");
+			// System.out.println("ERROR: Unknown exception occured.");
 			return new FibonacciSequence();
 		}
-    }
+	}
 }
