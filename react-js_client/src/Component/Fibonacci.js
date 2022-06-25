@@ -54,7 +54,7 @@ export default class Fibonacci extends Component {
             <input type="text" class="form-control" placeholder="How many numbers to retreve" id="elements" 
                 required value={elements} onChange={this.onChangeElements} name="elements" />
             <div class="input-group-append">
-                <button class="btn btn-primary" type="button" onClick={this.retrieveFibonacci} >Retreve</button>
+                <button class="btn btn-primary" type="button" onClick={this.retrieveFibonacci} >Retrieve</button>
             </div>
         </div>
 
